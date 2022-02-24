@@ -1,6 +1,8 @@
-Bernat Cases:Diseny
 
-Alex Mozota:Diseny
+
+Bernat Cases:Disseny
+
+Alex Mozota:Disseny
 
 Quim Farres:Programació
 

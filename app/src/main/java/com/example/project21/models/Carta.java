@@ -1,4 +1,4 @@
-package com.example.project21;
+package com.example.project21.models;
 
 import com.example.project21.models.Palos;
 import com.example.project21.models.Numeros;

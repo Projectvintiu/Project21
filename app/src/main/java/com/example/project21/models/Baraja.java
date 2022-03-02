@@ -1,7 +1,4 @@
-package com.example.project21;
-
-import com.example.project21.models.Numeros;
-import com.example.project21.models.Palos;
+package com.example.project21.models;
 
 import java.util.ArrayList;
 import java.util.Random;

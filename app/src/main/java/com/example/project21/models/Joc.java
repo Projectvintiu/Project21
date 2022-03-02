@@ -1,4 +1,4 @@
-package com.example.project21;
+package com.example.project21.models;
 
 public class Joc {
     public Jugador player;

@@ -25,6 +25,35 @@ public class Joc {
     }
 
 
+    public String startGame(){
+        Baraja playingBaraja = new Baraja();
+        playingBaraja.createFullDeck(); //Creem la baraja
+        Boolean fi = false;
+        playingBaraja.shuffle();  //Barrejem la baralla
+
+        String res = "";
+
+        //Crear baraja per el jugador i el dealer
+        Baraja playerDeck = new Baraja();
+        Baraja dealerDeck = new Baraja();
+
+        playerDeck.draw(playingBaraja);
+        playerDeck.draw(playingBaraja);
+
+        dealerDeck.draw(playingBaraja);
+        dealerDeck.draw(playingBaraja);
+
+
+        res = "La teva ma es: " + playerDeck.toString();
+        res = res + "\n" + "Amb un valor total de: " + playerDeck.cardsValue();
+        res = res + "\n" + "La primera carta del dealer es: " + dealerDeck.getCarta(0).toString();
+
+
+        return res;
+
+
+    }
+
     public void jugar(){
         Baraja playingBaraja = new Baraja();
         playingBaraja.createFullDeck(); //Creem la baraja
@@ -35,6 +64,8 @@ public class Joc {
         Baraja playerDeck = new Baraja();
         Baraja dealerDeck = new Baraja();
 
+
+
         //Game loop
         /*
         while(fi == false){
@@ -42,8 +73,8 @@ public class Joc {
             playerDeck.draw(playingBaraja);
             playerDeck.draw(playingBaraja);
 
-            dealerDeck.draw(playerDeck);
-            dealerDeck.draw(playerDeck);
+            dealerDeck.draw(playingBaraja);
+            dealerDeck.draw(playingBaraja);
 
 
             while(true){

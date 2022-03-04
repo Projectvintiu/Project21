@@ -91,13 +91,13 @@ public class Baraja {
         switch (aCarta.getNumero()){
             case DOS: totalValue += 2; break;
             case TRES: totalValue += 3; break;
-            case CUATRO: totalValue += 4; break;
-            case CINCO: totalValue += 5; break;
-            case SEIS: totalValue += 6; break;
-            case SIETE: totalValue += 7; break;
-            case OCHO: totalValue += 8; break;
-            case NUEVE: totalValue += 9; break;
-            case DIEZ: totalValue += 10; break;
+            case QUATRE: totalValue += 4; break;
+            case CINC: totalValue += 5; break;
+            case SIS: totalValue += 6; break;
+            case SET: totalValue += 7; break;
+            case VUIT: totalValue += 8; break;
+            case NOU: totalValue += 9; break;
+            case DEU: totalValue += 10; break;
             case J: totalValue += 10; break;
             case Q: totalValue += 10; break;
             case K: totalValue += 10; break;

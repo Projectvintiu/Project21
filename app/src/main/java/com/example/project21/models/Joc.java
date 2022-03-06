@@ -3,16 +3,51 @@ package com.example.project21.models;
 public class Joc {
 
     Baraja playingBaraja = new Baraja();
-    Baraja playerDeck = new Baraja();
+    public Baraja playerDeck = new Baraja();
     Baraja dealerDeck = new Baraja();
+    public boolean checkEndGame = false;
 
     String chatLog;
 
+
+    /***
+     * getter del parametre chatLog
+     *
+     * @return chatLog text que es mostra per pantalla
+     *
+     * @version 1.0
+     */
     public String getChatLog(){
         return chatLog;
     }
 
+    /***
+     * setter del parametre chatLog
+     *
+     * @param chatlog text que es mostra per pantalla
+     *
+     * @version 1.0
+     */
+    public void setChatLog(String chatlog){
+        chatLog = chatlog;
+    }
 
+    /***
+     *  Funció per a comprovar si estem al mitg de un torn o si la partida ja sha acabat
+     *
+     * @return chekEndgame boolea public que comprova si ha finalitzat el joc
+     *
+     * @version 1.0
+     */
+    public boolean checkGameEnded(){
+        return checkEndGame;
+    }
+
+    /***
+     *Funció que es crida quan el jugador es planta
+     *
+     * @version 1.0
+     */
     public void esPlanta(){
         chatLog = "";
         chatLog = "La teva ma es: " + playerDeck.toString();
@@ -25,6 +60,11 @@ public class Joc {
 
     }
 
+    /***
+     *Funció que es crida quan el jugador demana una carta
+     *
+     * @version 1.0
+     */
     public void esDemana(){
         playerDeck.draw(playingBaraja);
 
@@ -40,15 +80,20 @@ public class Joc {
 
     }
 
-    public String printChat(){
-        return chatLog;
-    }
 
-
+    /***
+     *  Funció que crea les baralles per el jugador, la ia i la baralla en la que es roben les cartes,
+     *  es crida cada cop que vulguem començar una partida
+     *
+     * @return chatLog String que es va mostrant per pantalla
+     *
+     * @version 1.0
+     */
     public String startGame(){
 
+        checkEndGame = false;
+
         playingBaraja.createFullDeck(); //Creem la baraja
-        Boolean fi = false;
         playingBaraja.shuffle();  //Barrejem la baralla
 
 
@@ -69,7 +114,15 @@ public class Joc {
 
     }
 
+    /***
+     *  Funció que comprova qui es el guanyador de la partida i que finalment retorna les cartes del
+     *  jugador i la ia a la baralla principal
+     *
+     *
+     * @version 1.0
+     */
     public void winner(){
+        checkEndGame = true;
         if(playerDeck.cardsValue() > 21){
             chatLog = chatLog + "\n" + "Has passat de 21, el dealer ha guanyat";
         }else{
@@ -100,6 +153,9 @@ public class Joc {
         dealerDeck.moveAllToBaraja(playingBaraja);
 
         chatLog = chatLog + "\n" + "Fi de la partida";
+
+
+
     }
 
 

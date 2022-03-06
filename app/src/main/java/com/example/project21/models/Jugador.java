@@ -1,5 +1,10 @@
 package com.example.project21.models;
 
+
+/***
+ * AQUESTA CLASSE NO SUTILITZA DE MOMENT PERO LA FAREM SERVIR MES ENDEVANT
+ */
+
 public class Jugador {
     private int pv;
     private String name;

@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Funció que es crida quan premem el boto de strat i que ens porta de MainActivity a GameActivity
+     */
     public void openGameActivity(){
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);

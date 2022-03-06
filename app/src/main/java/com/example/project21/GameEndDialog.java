@@ -12,6 +12,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 
+/***
+ * AQUESTA CLASSE NO SUTILITZA DE MOMENT PERO LA FAREM SERVIR MES ENDEVANT
+ */
+
+
 public class GameEndDialog extends DialogFragment {
 
     private GameActivity activity;
@@ -28,23 +33,24 @@ public class GameEndDialog extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+
         AlertDialog alertDialog = new AlertDialog.Builder(getContext())
                 .setPositiveButton("Play Again", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int id) {
-                        dialog.cancel();
+                        activity.joc.startGame();
+                        dialog.dismiss();
                     }
                 })
                 .setNegativeButton("Exit", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int id) {
-                        dialog.cancel();
+                        dialog.dismiss();
                     }
                 })
                 .setTitle("End Game")
                 .setMessage(activity.getMsg())
-                .setView(rootView)
-                .setCancelable(true)
+
                 .create();
         alertDialog.setCanceledOnTouchOutside(true);
         alertDialog.setCancelable(true);

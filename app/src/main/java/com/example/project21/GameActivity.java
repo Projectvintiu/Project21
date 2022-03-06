@@ -18,6 +18,8 @@ public class GameActivity extends AppCompatActivity {
     Joc joc = new Joc();
     private  Button stop_button;
     private  Button pull_button;
+    private  Button playAgain_button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,12 +28,13 @@ public class GameActivity extends AppCompatActivity {
         TextView msg = findViewById(R.id.textView_pueva);
 
         joc.startGame();
-        msg.setText(joc.printChat());
+        msg.setText(joc.getChatLog());
 
         stop_button = (Button) findViewById(R.id.stop_button);
         stop_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!joc.checkEndGame)
                 stopButtonActivity();
             }
         });
@@ -39,7 +42,17 @@ public class GameActivity extends AppCompatActivity {
         pull_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if((!joc.checkEndGame) && (joc.playerDeck.cardsValue() <= 21))
                 pullButtonActivity();
+            }
+        });
+
+        playAgain_button = (Button) findViewById(R.id.playAgain_button);
+        playAgain_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(joc.checkEndGame)
+                playAgainActivity();
             }
         });
 
@@ -47,44 +60,69 @@ public class GameActivity extends AppCompatActivity {
 
 
     }
+
+    /***
+     * getter de msg
+     *
+     * @return retorna el Log que es veu per pantalla
+     *
+     * @version 1.0
+     */
     public String getMsg(){
         return joc.getChatLog();
     }
 
+    /***
+     * Funció que s'executa quan apreten el botto de plantarse, cosa que fa que es tingui que comprovar
+     * qui es el guanyador de la partida
+     *
+     * @version 1.0
+     */
     void stopButtonActivity(){
         joc.esPlanta();
         TextView msg = findViewById(R.id.textView_pueva);
-        msg.setText(joc.printChat());
+        msg.setText(joc.getChatLog());
+
+        /*
 
         GameEndDialog dialog = GameEndDialog.newInstance(this);
         dialog.setCancelable(false);
         dialog.show(getSupportFragmentManager(),GAME_END_DIALOG_TAG);
+        */
+
 
     }
 
+    /***
+     * Funció que s'executa quan premem el boto de demanar una carta, el qual dona una carta mes al jugador
+     *
+     *
+     * @version 1.0
+     */
     void pullButtonActivity(){
         joc.esDemana();
         TextView msg = findViewById(R.id.textView_pueva);
-        msg.setText(joc.printChat());
+        msg.setText(joc.getChatLog());
 
 
 
     }
 
-    public void showAlertDialogButtonClicked(View view) {
+    /***
+     * Funció que s'executa quan premem el boto de tornar a jugar, cosa que reinicia el joc per a que el
+     * jugador pugui tornar a començar
+     *
+     *
+     * @version 1.0
+     */
+    void playAgainActivity(){
+        TextView msg = findViewById(R.id.textView_pueva);
+        joc.setChatLog("");
+        joc.startGame();
+        msg.setText(joc.getChatLog());
 
-        // setup the alert builder
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("AlertDialog");
-        builder.setMessage("Would you like to continue learning how to use Android alerts?");
-
-        // add the buttons
-        builder.setPositiveButton("Continue", null);
-        builder.setNegativeButton("Cancel", null);
-
-        // create and show the alert dialog
-        AlertDialog dialog = builder.create();
-        dialog.show();
     }
+
+
 
 }

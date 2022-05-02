@@ -10,13 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project21">
         <activity
-            android:name=".GameEndDialog"
-            android:exported="false" />
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="@string/title_activity_logging"
+            android:theme="@style/Theme.Project21.NoActionBar" />
         <activity
             android:name=".GameActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

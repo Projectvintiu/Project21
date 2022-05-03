@@ -1,10 +1,18 @@
 package com.example.project21.viewmodel;
 
+
+import android.content.Intent;
+import android.widget.Button;
+
 import androidx.lifecycle.MutableLiveData;
+
+import com.example.project21.GameActivity;
 
 public class LoginViewModel {
 
     private String TAG = "LoginViewModel";
+
+
 
     private  MutableLiveData<String> emailLiveData;
     private  MutableLiveData<String> errorEmailLiveData;
@@ -20,6 +28,14 @@ public class LoginViewModel {
         this.errorPasswordLiveData = new MutableLiveData<>();
 
         this.isLogged = new MutableLiveData<>();
+    }
+
+
+
+
+    public void login(){
+
+
     }
 
     public MutableLiveData<String> getEmailLiveData() {
@@ -54,5 +70,7 @@ public class LoginViewModel {
         this.errorPasswordLiveData = errorPasswordLiveData;
     }
 
-    public void login(){}
+
 }
+
+

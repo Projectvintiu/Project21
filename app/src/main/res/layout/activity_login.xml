@@ -78,22 +78,23 @@
                 android:text="Login" />
 
 
-            <TextView
-                android:id="@+id/link_signup"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:gravity="center"
-                android:text="Crear cuenta"
-                android:textSize="16sp" />
-
-
             <include
                 android:id="@+id/linearLayoutProgressBar"
                 layout="@layout/loading"
                 android:visibility="@{loginViewModel.isLogged ? View.VISIBLE : View.GONE}" />
 
         </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="100dp"
+            android:text="Register"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

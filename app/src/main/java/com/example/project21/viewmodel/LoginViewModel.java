@@ -21,8 +21,6 @@ public class LoginViewModel {
     private String TAG = "LoginViewModel";
 
 
-
-
     private  MutableLiveData<String> emailLiveData;
     private  MutableLiveData<String> errorEmailLiveData;
     private  MutableLiveData<String> passwordLiveData;
@@ -49,7 +47,6 @@ public class LoginViewModel {
     public void login(){
 
         Log.d(TAG, "In Loggin");
-
 
         // Get the data from fields
         String email = emailLiveData.getValue();

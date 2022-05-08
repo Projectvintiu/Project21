@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding activityLoginBinding;
+    private Button btnRegister;
 
 
     private String TAG = "LoginActivity";
@@ -34,6 +35,14 @@ public class LoginActivity extends AppCompatActivity {
 
         loginViewModel = new LoginViewModel();
         initDataBinding();
+
+        btnRegister = (Button) findViewById(R.id.btn_register);
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openRegisterActivity();
+            }
+        });
 
         loginViewModel.getEmailLiveData().observe(this, new Observer<String>() {
             @Override
@@ -88,6 +97,11 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
 
+    }
+
+    public void openRegisterActivity(){
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
     }
 
     private void setup(){

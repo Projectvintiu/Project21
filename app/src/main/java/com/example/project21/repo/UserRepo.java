@@ -4,14 +4,13 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.project21.models.Account;
 import com.example.project21.models.Result;
 import com.example.project21.models.User;
-import com.example.project21.service.AccountServiceImpl;
 import com.example.project21.service.UserService;
 import com.example.project21.service.UserServiceImpl;
 
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,28 +28,21 @@ public class UserRepo {
     }
 
     public void register(User user) {
-/*
-        this.userService.createUser(user).enqueue(new Callback<User>() {
+
+        this.userService.createUser(user).enqueue(new Callback<ResponseBody>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                Log.d(TAG, "register() -> onResponseSuccess -> " + response.body().toString());
-                int id_user = response.body().getId();
-                Log.d(TAG, "register() -> onResponseSuccess -> " + id_user);
-                registerResult = Result.success(response.body().getUsername());
-                Log.d(TAG, "register() -> onResponseSuccess / getResult-> " + registerResult.getResult());
-                registerResultLiveData.postValue(registerResult);
-                Log.d(TAG, "register() -> onResponseSuccess END");
+            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+                if (response.code() == 200) {
+                    Log.d(TAG, "Response ok");
+                }
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                registerResult = Result.error(t);
-                registerResultLiveData.postValue(regi);
-                Log.d(TAG, "register() -> onResponseError -> " + t.getMessage());
+            public void onFailure(Call<ResponseBody> call, Throwable t) {
+                Log.d(TAG, "Response FAIL");
             }
         });
 
- */
     }
 
 }

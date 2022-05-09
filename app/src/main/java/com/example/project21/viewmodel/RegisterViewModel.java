@@ -5,6 +5,8 @@ import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.project21.models.User;
+import com.example.project21.repo.UserRepo;
 import com.example.project21.utils.AccountUtils;
 
 
@@ -12,12 +14,14 @@ public class RegisterViewModel {
 
     private String TAG = "Register Activity";
 
-    private MutableLiveData<String> usernameLiveData;
-    private MutableLiveData<String> emailLiveData;
-    private MutableLiveData<String> nameLiveData;
-    private MutableLiveData<String> surnameLiveData;
-    private MutableLiveData<String> genderLiveData;
-    private MutableLiveData<String> passwordLiveData;
+    public MutableLiveData<String> usernameLiveData;
+    public MutableLiveData<String> emailLiveData;
+    public MutableLiveData<String> nameLiveData;
+    public MutableLiveData<String> surnameLiveData;
+    public MutableLiveData<String> genderLiveData;
+    public MutableLiveData<String> passwordLiveData;
+
+    public UserRepo userRepo;
 
     public RegisterViewModel(){
         this.usernameLiveData = new MutableLiveData<>();
@@ -26,6 +30,8 @@ public class RegisterViewModel {
         this.surnameLiveData = new MutableLiveData<>();
         this.genderLiveData = new MutableLiveData<>();
         this.passwordLiveData = new MutableLiveData<>();
+
+        this.userRepo = new UserRepo();
     }
 
     public void register() {
@@ -36,6 +42,12 @@ public class RegisterViewModel {
         String email = emailLiveData.getValue();
         String username = usernameLiveData.getValue();
         String password = passwordLiveData.getValue();
+        Log.d(TAG, "Name: --> " + name);
+        Log.d(TAG, "surname: --> " + surname);
+        Log.d(TAG, "email: --> " + email);
+        Log.d(TAG, "username: --> " + username);
+        Log.d(TAG, "password: --> " + password);
+
 
         if(isFormValid(email, password, name, surname, username)){
             /*
@@ -45,6 +57,10 @@ public class RegisterViewModel {
 
              */
         }
+
+
+
+
 
     }
 

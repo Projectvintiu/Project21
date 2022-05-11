@@ -1,61 +1,26 @@
 package com.example.project21.models;
 
-import java.util.Date;
-
 public class User {
-    private int id;
-    private Date created_at;
     private String username;
     private String password;
     private String email;
     private String name;
     private String surname;
-    private Date birthdate;
-    private String genere;
-    private int phone;
-    private String photo;
+    private String gender;
 
 
-    public User(int id, Date created_at, String username, String password, String email, String name, String surname, Date birthdate, String genere, int phone, String photo, String status) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.created_at = created_at;
-        this.email = email;
-        this.name = name;
-        this.surname = surname;
-        this.birthdate = birthdate;
-        this.genere = genere;
-        this.phone = phone;
-        this.photo = photo;
 
-
-    }
-
-    public User(String username, String email, String name, String surname, String password) {
-
+    public User(String username, String password, String email, String name, String surname, String gender) {
         this.username = username;
         this.password = password;
         this.email = email;
         this.name = name;
         this.surname = surname;
+        this.gender = gender;
+
+
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Date getCreated_at() {
-        return created_at;
-    }
-
-    public void setCreated_at(Date created_at) {
-        this.created_at = created_at;
-    }
 
     public String getUsername() {
         return username;
@@ -97,35 +62,13 @@ public class User {
         this.surname = surname;
     }
 
-    public Date getBirthdate() {
-        return birthdate;
+    public String getGender() {
+        return gender;
     }
 
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
-    public String getGenere() {
-        return genere;
-    }
 
-    public void setGenere(String genere) {
-        this.genere = genere;
-    }
-
-    public int getPhone() {
-        return phone;
-    }
-
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-
-    public String getPhoto() {
-        return photo;
-    }
-
-    public void setPhoto(String photo) {
-        this.photo = photo;
-    }
 }

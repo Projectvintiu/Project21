@@ -13,8 +13,6 @@ public interface UserService {
     @POST("/user/register")
     Call<ResponseBody> createUser(@Body User user);
 
-    @GET("/user/show/{username}")
-    Call<User> getUserByUsername(@Query("username") String username);
 }
 
 

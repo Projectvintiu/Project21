@@ -22,80 +22,75 @@
         android:id="@+id/username"
         android:layout_width="257dp"
         android:layout_height="48dp"
-        android:layout_marginTop="156dp"
         android:layout_marginBottom="323dp"
+        android:hint="username"
         android:text="@={registerViewModel.usernameLiveData}"
         app:layout_constraintBottom_toTopOf="@+id/btn_done"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.575" />
+        app:layout_constraintVertical_bias="0.209" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="257dp"
         android:layout_height="wrap_content"
+        android:hint="password"
         android:text="@={registerViewModel.passwordLiveData}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.163" />
+
 
     <EditText
         android:id="@+id/email"
         android:layout_width="257dp"
         android:layout_height="wrap_content"
+        android:hint="email"
         android:text="@={registerViewModel.emailLiveData}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.36" />
+        app:layout_constraintVertical_bias="0.443" />
 
     <EditText
         android:id="@+id/name"
         android:layout_width="257dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="430dp"
+        android:hint="name"
         android:text="@={registerViewModel.nameLiveData}"
-        app:layout_constraintBottom_toTopOf="@+id/btn_done"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.26" />
 
     <EditText
         android:id="@+id/surname"
         android:layout_width="257dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="374dp"
+        android:hint="surname"
         android:text="@={registerViewModel.surnameLiveData}"
-        app:layout_constraintBottom_toTopOf="@+id/btn_done"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.689" />
+        app:layout_constraintVertical_bias="0.357" />
 
     <EditText
         android:id="@+id/genere"
         android:layout_width="257dp"
         android:layout_height="wrap_content"
+        android:hint="genere male female"
         android:text="@={registerViewModel.genderLiveData}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/phone"
-        android:layout_width="257dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.701" />
+        app:layout_constraintVertical_bias="0.546" />
 
     <Button
         android:id="@+id/btn_done"

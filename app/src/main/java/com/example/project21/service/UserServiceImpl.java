@@ -16,9 +16,5 @@ public class UserServiceImpl implements UserService{
         return retrofit.create(UserService.class).createUser(user);
     }
 
-    @Override
-    public Call<User> getUserByUsername(String username) {
-        return null;
-    }
 
 }

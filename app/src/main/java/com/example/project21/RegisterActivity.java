@@ -17,12 +17,13 @@ public class RegisterActivity extends AppCompatActivity {
     private RegisterViewModel registerViewModel;
     private ActivityRegisterBinding activityRegisterBinding;
 
-    private String TAG;
+    private String TAG = "RegisterActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
         this.registerViewModel = new RegisterViewModel();
         initDataBinding();
 
@@ -35,7 +36,7 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         setup();
-        data();
+        //data();
     }
 
     private void initDataBinding() {
@@ -52,18 +53,12 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void data(){
-        String token = PreferencesProvider.providePreferences().getString("token", "");
-        Log.d(TAG, "token: " + token);
-        if (token.equals("")) {
-            // If device has no token -> go to LoginActivity()
-            //startActivity(new Intent(this, LoginActivity.class));
-            //showLogin();
-        } else {
-            // If a userToken is stored on sharedPreferences go to MainActivity().
-            startActivity(new Intent(this, GameActivity.class));
-        }
-        // Close the activity, the user don't need to enter again with back functionality
-        //finish();
+        //String token = PreferencesProvider.providePreferences().getString("token", "");
+        //Log.d(TAG, "token: " + token);
+
+        //startActivity(new Intent(this, GameActivity.class));
+
+
     }
 
 }

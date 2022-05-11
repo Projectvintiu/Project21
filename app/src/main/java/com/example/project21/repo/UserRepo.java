@@ -2,6 +2,7 @@ package com.example.project21.repo;
 
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.project21.models.Result;
@@ -35,14 +36,17 @@ public class UserRepo {
                 if (response.code() == 200) {
                     Log.d(TAG, "Response ok");
                 }
+                registerResultLiveData.postValue(registerResult);
             }
 
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
+                registerResultLiveData.postValue(registerResult);
                 Log.d(TAG, "Response FAIL");
             }
         });
-
     }
+
+    //public LiveData<Result<String>> getReisterResult() {return this.registerResultLiveData;}
 
 }

@@ -21,6 +21,7 @@ public class RegisterViewModel {
     public MutableLiveData<String> genderLiveData;
     public MutableLiveData<String> passwordLiveData;
 
+
     public UserRepo userRepo;
 
     public RegisterViewModel(){
@@ -37,17 +38,22 @@ public class RegisterViewModel {
     public void register() {
         Log.d(TAG, "In Register");
 
+
         String name = nameLiveData.getValue();
         String surname = surnameLiveData.getValue();
         String email = emailLiveData.getValue();
         String username = usernameLiveData.getValue();
         String password = passwordLiveData.getValue();
+        String gender = genderLiveData.getValue();
         Log.d(TAG, "Name: --> " + name);
         Log.d(TAG, "surname: --> " + surname);
         Log.d(TAG, "email: --> " + email);
         Log.d(TAG, "username: --> " + username);
         Log.d(TAG, "password: --> " + password);
+        Log.d(TAG, "gender: --> " + gender);
 
+        User user = new User(username, password, email, name, surname, gender);
+        this.userRepo.register(user);
 
         if(isFormValid(email, password, name, surname, username)){
             /*

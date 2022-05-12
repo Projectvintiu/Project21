@@ -3,8 +3,10 @@ package com.example.project21.viewmodel;
 import android.util.Log;
 import android.widget.Toast;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.project21.models.Result;
 import com.example.project21.models.User;
 import com.example.project21.repo.UserRepo;
 import com.example.project21.utils.AccountUtils;
@@ -21,6 +23,7 @@ public class RegisterViewModel {
     public MutableLiveData<String> genderLiveData;
     public MutableLiveData<String> passwordLiveData;
 
+    public MutableLiveData<Boolean> isRegistered;
 
     public UserRepo userRepo;
 
@@ -31,6 +34,9 @@ public class RegisterViewModel {
         this.surnameLiveData = new MutableLiveData<>();
         this.genderLiveData = new MutableLiveData<>();
         this.passwordLiveData = new MutableLiveData<>();
+
+        this.isRegistered= new MutableLiveData<>();
+
 
         this.userRepo = new UserRepo();
     }
@@ -70,6 +76,15 @@ public class RegisterViewModel {
 
     }
 
+    public LiveData<Result<String>> isUserRegistered(){
+        if(this.userRepo.getRegisterResult() != null){
+            isRegistered.postValue(true);
+        }
+        return this.userRepo.getRegisterResult();
+    }
+
+
+
     private Boolean isFormValid(String email, String password, String name, String surname, String username){
         boolean isValid = true;
 
@@ -89,6 +104,13 @@ public class RegisterViewModel {
         return isValid;
     }
 
+    public MutableLiveData<Boolean> getIsRegistered() {
+        return isRegistered;
+    }
+
+    public void setIsRegistered(MutableLiveData<Boolean> isRegisteredLiveData) {
+        this.isRegistered= isRegisteredLiveData;
+    }
 
     public MutableLiveData<String> getUserNameLiveData() {
         return usernameLiveData;

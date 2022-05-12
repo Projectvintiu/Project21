@@ -24,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        this.registerViewModel = new RegisterViewModel();
+        registerViewModel = new RegisterViewModel();
         initDataBinding();
 
         registerViewModel.getEmailLiveData().observe(this, new Observer<String>() {
@@ -36,7 +36,21 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         setup();
-        //data();
+
+        registerViewModel.getIsRegistered().observe(this, new Observer<Boolean>() {
+            @Override
+            public void onChanged(Boolean aBoolean) {
+                registerViewModel.isRegistered.postValue(false);
+
+
+            }
+        });
+
+        registerViewModel.isRegistered.postValue(false);
+
+
+
+
     }
 
     private void initDataBinding() {

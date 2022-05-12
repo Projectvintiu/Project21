@@ -10,7 +10,7 @@ import retrofit2.Call;
 import retrofit2.http.Query;
 
 public interface UserService {
-    @POST("/user/register")
+    @POST("users/register")
     Call<ResponseBody> createUser(@Body User user);
 
 }

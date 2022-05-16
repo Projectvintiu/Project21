@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/textView_pueva"
-        android:layout_width="340dp"
-        android:layout_height="462dp"
+        android:layout_width="341dp"
+        android:layout_height="131dp"
         android:layout_marginTop="64dp"
         android:layout_marginEnd="36dp"
         android:text="Estas al Joc"
@@ -46,5 +46,15 @@
         android:text="Play Again"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/cardViewPlayer"
+        android:layout_width="251dp"
+        android:layout_height="181dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_pueva"
+        app:layout_constraintVertical_bias="0.225"
+        app:srcCompat="?android:attr/activatedBackgroundIndicator"
+        tools:layout_editor_absoluteX="80dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

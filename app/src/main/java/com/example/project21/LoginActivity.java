@@ -53,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
         setup();
         data();
+        openGameActivity();  //Para entrar diractamente en el juego sin necesidad de iniciar sesión
 
         loginViewModel.isUserLogged().observe(this, new Observer<Result<String>>() {
             @Override

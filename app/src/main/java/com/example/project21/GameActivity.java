@@ -60,6 +60,7 @@ public class GameActivity extends AppCompatActivity {
 
         //TODO: @Didac. Aquest botó podria estar només activat quan la partida ha acabat. Per defecte no s'hauria de deixar jugar.
         //TODO: @Didac. Inclús, per fer-ho millor es podria mostrar un DialogFragment que pregunti si vol tornar a jugar.
+        //TODO: @Didac. Per anar bé, el resultat de la partida s'hauria de poder guardar en la part de backend un cop finalitzi. La petició de guardar/crear partida.
         playAgain_button = (Button) findViewById(R.id.playAgain_button);
         playAgain_button.setOnClickListener(new View.OnClickListener() {
             @Override

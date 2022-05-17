@@ -35,6 +35,10 @@ public class GameActivity extends AppCompatActivity {
         Log.d(TAG, "Esta es la carta que se imprimira --> " + joc.playerDeck.getCarta(0).toString());
         playerCard.setImageAlpha(imageCard(joc.playerDeck.getCarta(0)));
 
+        //TODO: @Didac. Us proposo que abans del taulell, es mostri una pantalla on es vegui el logo i un boto per començar a jugar. Aquest comença a jugar us ha de portar aquí al GameActivity. Ho teniu fet. Afegiu el logo que us quedara mes xula.
+        //TODO: @Didac. Hem de millorar la part visual.
+
+        //TODO: @Didac està bé la idea pero hauriem d'intentar utilitzar un viewmodel (dijous mirem com fer-ho).
         stop_button = (Button) findViewById(R.id.stop_button);
         stop_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +47,8 @@ public class GameActivity extends AppCompatActivity {
                 stopButtonActivity();
             }
         });
+
+        //TODO: @Didac està bé la idea pero hauriem d'intentar utilitzar un viewmodel (dijous mirem com fer-ho).
         pull_button = (Button) findViewById(R.id.pull_button);
         pull_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +58,8 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
+        //TODO: @Didac. Aquest botó podria estar només activat quan la partida ha acabat. Per defecte no s'hauria de deixar jugar.
+        //TODO: @Didac. Inclús, per fer-ho millor es podria mostrar un DialogFragment que pregunti si vol tornar a jugar.
         playAgain_button = (Button) findViewById(R.id.playAgain_button);
         playAgain_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,9 +133,9 @@ public class GameActivity extends AppCompatActivity {
         joc.setChatLog("");
         joc.startGame();
         msg.setText(joc.getChatLog());
-
     }
 
+    //TODO @Didac: Això hauria d'estar implementat en la classe joc o carta
     //Intento de poner las imagenes en pantalla
     public int imageCard(Carta card){
         switch (card.toString()){

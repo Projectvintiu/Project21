@@ -44,12 +44,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        loginViewModel.getEmailLiveData().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                Log.d(TAG, "getEmailLiveData - > " + s);
-            }
-        });
 
         setup();
         data();
@@ -95,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void openGameActivity(){
-        Intent intent = new Intent(this, GameActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
 
     }

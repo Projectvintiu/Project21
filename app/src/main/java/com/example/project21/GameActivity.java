@@ -2,6 +2,7 @@ package com.example.project21;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -16,6 +17,7 @@ public class GameActivity extends AppCompatActivity {
 
     private static final String GAME_END_DIALOG_TAG = "game_end_dialog_tag";
     String TAG = "GameActivity";
+    String TAGGAME = "GameChat";
 
     Joc joc = new Joc();
     private  Button stop_button;
@@ -27,13 +29,15 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        TextView msg = findViewById(R.id.textView_pueva);
         ImageView playerCard = findViewById(R.id.cardViewPlayer);
+        ImageView dealer = findViewById(R.id.carta1d);
 
         joc.startGame();
-        msg.setText(joc.getChatLog());
-        Log.d(TAG, "Esta es la carta que se imprimira --> " + joc.playerDeck.getCarta(0).toString());
-        playerCard.setImageAlpha(imageCard(joc.playerDeck.getCarta(0)));
+        Log.d(TAGGAME,"Empieza el juego");
+        Log.d(TAGGAME,joc.getChatLog());
+
+        playerCard.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(0))));
+        dealer.setImageDrawable(getDrawable(imageCard(joc.dealerDeck.getCarta(0))));
 
         //TODO: @Didac. Us proposo que abans del taulell, es mostri una pantalla on es vegui el logo i un boto per començar a jugar. Aquest comença a jugar us ha de portar aquí al GameActivity. Ho teniu fet. Afegiu el logo que us quedara mes xula.
         //TODO: @Didac. Hem de millorar la part visual.
@@ -94,8 +98,7 @@ public class GameActivity extends AppCompatActivity {
      */
     void stopButtonActivity(){
         joc.esPlanta();
-        TextView msg = findViewById(R.id.textView_pueva);
-        msg.setText(joc.getChatLog());
+        Log.d(TAGGAME,joc.getChatLog());
 
         /*
 
@@ -115,8 +118,7 @@ public class GameActivity extends AppCompatActivity {
      */
     void pullButtonActivity(){
         joc.esDemana();
-        TextView msg = findViewById(R.id.textView_pueva);
-        msg.setText(joc.getChatLog());
+        Log.d(TAGGAME,joc.getChatLog());
 
 
 
@@ -130,10 +132,16 @@ public class GameActivity extends AppCompatActivity {
      * @version 1.0
      */
     void playAgainActivity(){
-        TextView msg = findViewById(R.id.textView_pueva);
+        /*TextView msg = findViewById(R.id.textView_pueva);
         joc.setChatLog("");
         joc.startGame();
-        msg.setText(joc.getChatLog());
+        msg.setText(joc.getChatLog());*/
+        openGameActivity();
+    }
+
+    public void openGameActivity(){
+        Intent intent = new Intent(this, GameActivity.class);
+        startActivity(intent);
     }
 
     //TODO @Didac: Això hauria d'estar implementat en la classe joc o carta

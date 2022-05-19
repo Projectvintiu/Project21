@@ -4,7 +4,7 @@ public class Joc {
 
     Baraja playingBaraja = new Baraja();
     public Baraja playerDeck = new Baraja();
-    Baraja dealerDeck = new Baraja();
+    public Baraja dealerDeck = new Baraja();
     public boolean checkEndGame = false;
 
     String chatLog;

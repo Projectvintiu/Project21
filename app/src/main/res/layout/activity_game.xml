@@ -6,22 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".GameActivity">
 
-    <TextView
-        android:id="@+id/textView_pueva"
-        android:layout_width="341dp"
-        android:layout_height="131dp"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="36dp"
-        android:text="Estas al Joc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <Button
         android:id="@+id/pull_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="76dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="340dp"
         android:text="PULL"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -30,8 +20,8 @@
         android:id="@+id/stop_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="84dp"
-        android:layout_marginBottom="136dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="340dp"
         android:onClick="@{() -> GameActivity.onClickedAt(Options.STOP)}"
         android:text="PLANTARSE"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -41,20 +31,36 @@
         android:id="@+id/playAgain_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="340dp"
         android:text="Play Again"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.437"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/cardViewPlayer"
-        android:layout_width="251dp"
-        android:layout_height="181dp"
+        android:layout_width="211dp"
+        android:layout_height="206dp"
+        android:layout_marginBottom="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/playAgain_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.402"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="?android:attr/activatedBackgroundIndicator" />
+
+    <ImageView
+        android:id="@+id/carta1d"
+        android:layout_width="217dp"
+        android:layout_height="268dp"
+        android:layout_marginBottom="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_pueva"
-        app:layout_constraintVertical_bias="0.225"
-        app:srcCompat="?android:attr/activatedBackgroundIndicator"
-        tools:layout_editor_absoluteX="80dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/screen_background_light_transparent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
 

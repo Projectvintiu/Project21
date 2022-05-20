@@ -92,6 +92,8 @@ public class Joc {
     public String startGame(){
 
         checkEndGame = false;
+        playerDeck.moveAllToBaraja(playingBaraja);
+        dealerDeck.moveAllToBaraja(playingBaraja);
 
         playingBaraja.createFullDeck(); //Creem la baraja
         playingBaraja.shuffle();  //Barrejem la baralla
@@ -149,8 +151,7 @@ public class Joc {
                 chatLog = chatLog + "\n" + "El dealer guanya, la teva ma val: " + playerDeck.cardsValue() + " i la ma del dealer es de: " + dealerDeck.cardsValue();
             }
         }
-        playerDeck.moveAllToBaraja(playingBaraja);
-        dealerDeck.moveAllToBaraja(playingBaraja);
+
 
         chatLog = chatLog + "\n" + "Fi de la partida";
 

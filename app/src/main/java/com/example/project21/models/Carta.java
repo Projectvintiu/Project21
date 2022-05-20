@@ -41,8 +41,20 @@ public class Carta {
      *
      * @version 1.0
      */
-    public Numeros getNumero(){
-        return this.numero;
+    public Palos getPalo() {
+        return palo;
+    }
+
+    public void setPalo(Palos palo) {
+        this.palo = palo;
+    }
+
+    public Numeros getNumero() {
+        return numero;
+    }
+
+    public void setNumero(Numeros numero) {
+        this.numero = numero;
     }
 
 

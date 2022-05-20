@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.project21.models.Carta;
@@ -29,15 +30,28 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        ImageView playerCard = findViewById(R.id.cardViewPlayer);
-        ImageView dealer = findViewById(R.id.carta1d);
+
+        TextView valorPlayer = findViewById(R.id.valorPlayer);
+        ImageView playerCard1 = findViewById(R.id.playerCard1);
+        ImageView playerCard2 = findViewById(R.id.playerCard2);
+
+        ImageView dealerCard1 = findViewById(R.id.dealerCard1);
+        ImageView dealerCard2 = findViewById(R.id.dealerCard2);
 
         joc.startGame();
         Log.d(TAGGAME,"Empieza el juego");
         Log.d(TAGGAME,joc.getChatLog());
 
-        playerCard.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(0))));
-        dealer.setImageDrawable(getDrawable(imageCard(joc.dealerDeck.getCarta(0))));
+        valorPlayer.setText(String.valueOf(joc.playerDeck.cardsValue()));
+
+        playerCard1.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(0))));
+        playerCard2.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(1))));
+
+        dealerCard1.setImageDrawable(getDrawable(R.drawable.back_side));
+        dealerCard2.setImageDrawable(getDrawable(imageCard(joc.dealerDeck.getCarta(1))));
+
+
+
 
         //TODO: @Didac. Us proposo que abans del taulell, es mostri una pantalla on es vegui el logo i un boto per començar a jugar. Aquest comença a jugar us ha de portar aquí al GameActivity. Ho teniu fet. Afegiu el logo que us quedara mes xula.
         //TODO: @Didac. Hem de millorar la part visual.
@@ -53,10 +67,12 @@ public class GameActivity extends AppCompatActivity {
         });
 
         //TODO: @Didac està bé la idea pero hauriem d'intentar utilitzar un viewmodel (dijous mirem com fer-ho).
+
         pull_button = (Button) findViewById(R.id.pull_button);
         pull_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if((!joc.checkEndGame) && (joc.playerDeck.cardsValue() <= 21))
                 pullButtonActivity();
             }
@@ -99,13 +115,36 @@ public class GameActivity extends AppCompatActivity {
     void stopButtonActivity(){
         joc.esPlanta();
         Log.d(TAGGAME,joc.getChatLog());
+        ImageView dealerCard1 = findViewById(R.id.dealerCard1);
+        dealerCard1.setImageDrawable(getDrawable(imageCard(joc.dealerDeck.getCarta(0))));
 
-        /*
+        Log.d(TAGGAME,String.valueOf(joc.dealerDeck.deckSize()));
 
-        GameEndDialog dialog = GameEndDialog.newInstance(this);
-        dialog.setCancelable(false);
-        dialog.show(getSupportFragmentManager(),GAME_END_DIALOG_TAG);
-        */
+        ImageView dealerCard3 = findViewById(R.id.dealerCard3);
+        ImageView dealerCard4 = findViewById(R.id.dealerCard4);
+        ImageView dealerCard5 = findViewById(R.id.dealerCard5);
+        ImageView dealerCard6 = findViewById(R.id.dealerCard6);
+        if(joc.dealerDeck.deckSize() > 2){
+            for(int i = 0; i < (joc.dealerDeck.deckSize() - 2); i++){
+                switch(i + 3) {
+                    case 3:
+                        dealerCard3.setImageDrawable(getDrawable(imageCard(joc.dealerDeck.getCarta(2))));
+                        break;
+                    case 4:
+                        dealerCard4.setImageDrawable(getDrawable(imageCard(joc.dealerDeck.getCarta(3))));
+                        break;
+                    case 5:
+                        dealerCard5.setImageDrawable(getDrawable(imageCard(joc.dealerDeck.getCarta(4))));
+                        break;
+                    case 6:
+                        dealerCard6.setImageDrawable(getDrawable(imageCard(joc.dealerDeck.getCarta(5))));
+                        break;
+
+                }
+            }
+        }
+
+
 
 
     }
@@ -117,9 +156,31 @@ public class GameActivity extends AppCompatActivity {
      * @version 1.0
      */
     void pullButtonActivity(){
+        ImageView playerCard3 = findViewById(R.id.playerCard3);
+        ImageView playerCard4 = findViewById(R.id.playerCard4);
+        ImageView playerCard5 = findViewById(R.id.playerCard5);
+        ImageView playerCard6 = findViewById(R.id.playerCard6);
+        TextView valorPlayer = findViewById(R.id.valorPlayer);
         joc.esDemana();
         Log.d(TAGGAME,joc.getChatLog());
 
+        switch(joc.playerDeck.deckSize()) {
+            case 3:
+                playerCard3.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(2))));
+                break;
+            case 4:
+                playerCard4.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(3))));
+                break;
+            case 5:
+                playerCard5.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(4))));
+                break;
+            case 6:
+                playerCard6.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(5))));
+                break;
+
+        }
+        if((!joc.checkEndGame) && (joc.playerDeck.cardsValue() <= 21))
+            valorPlayer.setText(String.valueOf(joc.playerDeck.cardsValue()));
 
 
     }

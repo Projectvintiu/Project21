@@ -181,6 +181,28 @@ public class Baraja {
     return totalValue;
     }
 
+    public int secondCardValue(){
+        int totalValue = 0;
+        int aces = 0;
+
+            switch (cartas.get(1).getNumero()){
+                case DOS: totalValue += 2; break;
+                case TRES: totalValue += 3; break;
+                case QUATRE: totalValue += 4; break;
+                case CINC: totalValue += 5; break;
+                case SIS: totalValue += 6; break;
+                case SET: totalValue += 7; break;
+                case VUIT: totalValue += 8; break;
+                case NOU: totalValue += 9; break;
+                case DEU: totalValue += 10; break;
+                case J: totalValue += 10; break;
+                case Q: totalValue += 10; break;
+                case K: totalValue += 10; break;
+                case A: aces += 1; break;
+            }
+
+        return totalValue;
+    }
 
     /***
      *

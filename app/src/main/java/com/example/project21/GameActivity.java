@@ -30,8 +30,9 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        ImageView valorP = findViewById(R.id.number);
+        ImageView valorD = findViewById(R.id.numberD);
 
-        TextView valorPlayer = findViewById(R.id.valorPlayer);
         ImageView playerCard1 = findViewById(R.id.playerCard1);
         ImageView playerCard2 = findViewById(R.id.playerCard2);
 
@@ -42,7 +43,6 @@ public class GameActivity extends AppCompatActivity {
         Log.d(TAGGAME,"Empieza el juego");
         Log.d(TAGGAME,joc.getChatLog());
 
-        valorPlayer.setText(String.valueOf(joc.playerDeck.cardsValue()));
 
         playerCard1.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(0))));
         playerCard2.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(1))));
@@ -51,6 +51,9 @@ public class GameActivity extends AppCompatActivity {
         dealerCard2.setImageDrawable(getDrawable(imageCard(joc.dealerDeck.getCarta(1))));
 
 
+
+        valorP.setImageDrawable(getDrawable(imageNumber(joc.playerDeck.cardsValue())));
+        valorD.setImageDrawable(getDrawable(imageNumber(joc.dealerDeck.secondCardValue())));
 
 
         //TODO: @Didac. Us proposo que abans del taulell, es mostri una pantalla on es vegui el logo i un boto per començar a jugar. Aquest comença a jugar us ha de portar aquí al GameActivity. Ho teniu fet. Afegiu el logo que us quedara mes xula.
@@ -113,6 +116,7 @@ public class GameActivity extends AppCompatActivity {
      * @version 1.0
      */
     void stopButtonActivity(){
+        ImageView valorD = findViewById(R.id.numberD);
         joc.esPlanta();
         Log.d(TAGGAME,joc.getChatLog());
         ImageView dealerCard1 = findViewById(R.id.dealerCard1);
@@ -143,6 +147,7 @@ public class GameActivity extends AppCompatActivity {
                 }
             }
         }
+        valorD.setImageDrawable(getDrawable(imageNumber(joc.dealerDeck.cardsValue())));
 
 
 
@@ -156,13 +161,14 @@ public class GameActivity extends AppCompatActivity {
      * @version 1.0
      */
     void pullButtonActivity(){
+        ImageView valorP = findViewById(R.id.number);
         ImageView playerCard3 = findViewById(R.id.playerCard3);
         ImageView playerCard4 = findViewById(R.id.playerCard4);
         ImageView playerCard5 = findViewById(R.id.playerCard5);
         ImageView playerCard6 = findViewById(R.id.playerCard6);
-        TextView valorPlayer = findViewById(R.id.valorPlayer);
         joc.esDemana();
         Log.d(TAGGAME,joc.getChatLog());
+        valorP.setImageDrawable(getDrawable(imageNumber(joc.playerDeck.cardsValue())));
 
         switch(joc.playerDeck.deckSize()) {
             case 3:
@@ -179,8 +185,7 @@ public class GameActivity extends AppCompatActivity {
                 break;
 
         }
-        if((!joc.checkEndGame) && (joc.playerDeck.cardsValue() <= 21))
-            valorPlayer.setText(String.valueOf(joc.playerDeck.cardsValue()));
+
 
 
     }
@@ -316,6 +321,58 @@ public class GameActivity extends AppCompatActivity {
             default:
                 return R.drawable.joker;
         }
+    }
+
+
+    public int imageNumber(int value){
+        switch (value){
+            case 1:
+                return R.drawable.uno;
+            case 2:
+                return R.drawable.dos;
+            case 3:
+                return R.drawable.tres;
+            case 4:
+                return R.drawable.cuatro;
+            case 5:
+                return R.drawable.cinco;
+            case 6:
+                return R.drawable.seis;
+            case 7:
+                return R.drawable.siete;
+            case 8:
+                return R.drawable.ocho;
+            case 9:
+                return R.drawable.nueve;
+            case 10:
+                return R.drawable.diez;
+            case 11:
+                return R.drawable.once;
+            case 12:
+                return R.drawable.doce;
+            case 13:
+                return R.drawable.trece;
+            case 14:
+                return R.drawable.catorce;
+            case 15:
+                return R.drawable.quince;
+            case 16:
+                return R.drawable.dieziseis;
+            case 17:
+                return R.drawable.diezisiete;
+            case 18:
+                return R.drawable.dieziocho;
+            case 19:
+                return R.drawable.diezinueve;
+            case 20:
+                return R.drawable.veinte;
+            case 21:
+                return R.drawable.veintiuno;
+            default:
+                return R.drawable.zero;
+
+        }
+
     }
 
 }

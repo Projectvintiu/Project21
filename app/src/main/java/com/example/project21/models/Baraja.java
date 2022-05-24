@@ -183,7 +183,6 @@ public class Baraja {
 
     public int secondCardValue(){
         int totalValue = 0;
-        int aces = 0;
 
             switch (cartas.get(1).getNumero()){
                 case DOS: totalValue += 2; break;
@@ -198,7 +197,7 @@ public class Baraja {
                 case J: totalValue += 10; break;
                 case Q: totalValue += 10; break;
                 case K: totalValue += 10; break;
-                case A: aces += 1; break;
+                case A: totalValue += 1; break;
             }
 
         return totalValue;

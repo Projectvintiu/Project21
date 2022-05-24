@@ -2,10 +2,14 @@ package com.example.project21;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -23,12 +27,15 @@ public class GameActivity extends AppCompatActivity {
     Joc joc = new Joc();
     private  Button stop_button;
     private  Button pull_button;
-    private  Button playAgain_button;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+
+
 
         ImageView valorP = findViewById(R.id.number);
         ImageView valorD = findViewById(R.id.numberD);
@@ -47,7 +54,7 @@ public class GameActivity extends AppCompatActivity {
         playerCard1.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(0))));
         playerCard2.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(1))));
 
-        dealerCard1.setImageDrawable(getDrawable(R.drawable.back_side));
+        dealerCard1.setImageDrawable(getDrawable(R.drawable.backcard));
         dealerCard2.setImageDrawable(getDrawable(imageCard(joc.dealerDeck.getCarta(1))));
 
 
@@ -61,17 +68,23 @@ public class GameActivity extends AppCompatActivity {
 
         //TODO: @Didac està bé la idea pero hauriem d'intentar utilitzar un viewmodel (dijous mirem com fer-ho).
         stop_button = (Button) findViewById(R.id.stop_button);
+        stop_button.setBackgroundColor(Color.RED);
+        stop_button.setTextColor(Color.WHITE);
         stop_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!joc.checkEndGame)
                 stopButtonActivity();
+
             }
+
         });
 
         //TODO: @Didac està bé la idea pero hauriem d'intentar utilitzar un viewmodel (dijous mirem com fer-ho).
 
         pull_button = (Button) findViewById(R.id.pull_button);
+        pull_button.setBackgroundColor(Color.BLACK);
+        pull_button.setTextColor(Color.WHITE);
         pull_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -80,21 +93,6 @@ public class GameActivity extends AppCompatActivity {
                 pullButtonActivity();
             }
         });
-
-        //TODO: @Didac. Aquest botó podria estar només activat quan la partida ha acabat. Per defecte no s'hauria de deixar jugar.
-        //TODO: @Didac. Inclús, per fer-ho millor es podria mostrar un DialogFragment que pregunti si vol tornar a jugar.
-        //TODO: @Didac. Per anar bé, el resultat de la partida s'hauria de poder guardar en la part de backend un cop finalitzi. La petició de guardar/crear partida.
-        playAgain_button = (Button) findViewById(R.id.playAgain_button);
-        playAgain_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(joc.checkEndGame)
-                playAgainActivity();
-            }
-        });
-
-
-
 
     }
 
@@ -148,7 +146,7 @@ public class GameActivity extends AppCompatActivity {
             }
         }
         valorD.setImageDrawable(getDrawable(imageNumber(joc.dealerDeck.cardsValue())));
-
+        showEndGameDialog();
 
 
 
@@ -186,6 +184,10 @@ public class GameActivity extends AppCompatActivity {
 
         }
 
+        if(joc.playerDeck.cardsValue() > 21){
+            showEndGameDialog();
+        }
+
 
 
     }
@@ -208,6 +210,43 @@ public class GameActivity extends AppCompatActivity {
     public void openGameActivity(){
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
+    }
+    public void openMainActivity(){
+        Intent intent = new Intent(this,MainActivity.class);
+        startActivity(intent);
+
+    }
+
+    public void showEndGameDialog(){
+        final Dialog dialog = new Dialog(GameActivity.this);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setCancelable(false);
+        dialog.setContentView(R.layout.dialog_end_game);
+        dialog.getWindow().setGravity(Gravity.TOP);
+
+        Button playAgainButton = dialog.findViewById(R.id.button_playAgain);
+        Button exitButton = dialog.findViewById(R.id.button_exit);
+        ImageView winOrLose = dialog.findViewById(R.id.winOrLoseImg);
+
+        if(joc.getWinner() == 0)//perds
+        {
+            winOrLose.setImageDrawable(getDrawable(R.drawable.ulose));
+        }else if(joc.getWinner() == 2){//guanyes
+            winOrLose.setImageDrawable(getDrawable(R.drawable.uwin));
+        }else{//empates
+            winOrLose.setImageDrawable(getDrawable(R.drawable.utied));
+        }
+        playAgainButton.setOnClickListener((view) -> {
+            openGameActivity();
+
+        });
+        exitButton.setOnClickListener((view) -> {
+            openMainActivity();
+
+        });
+
+        dialog.show();
+
     }
 
     //TODO @Didac: Això hauria d'estar implementat en la classe joc o carta

@@ -6,9 +6,27 @@ public class Joc {
     public Baraja playerDeck = new Baraja();
     public Baraja dealerDeck = new Baraja();
     public boolean checkEndGame = false;
+    public int winner = 0;
 
     String chatLog;
 
+
+    /***
+     * getter de guanyador
+     * 0 perds 1 empate i 2 guanyes
+     * @return guanyador
+     */
+    public int getWinner() {
+        return winner;
+    }
+    /***
+     * seter de guanyador
+     * 0 perds 1 empate i 2 guanyes
+     *
+     */
+    public void setWinner(int winner) {
+        this.winner = winner;
+    }
 
     /***
      * getter del parametre chatLog
@@ -138,17 +156,22 @@ public class Joc {
             }
             if(dealerDeck.cardsValue() > 21){
                 chatLog = chatLog + "\n" + "Has guanyat!!";
+                setWinner(2);
             }else
             if(dealerDeck.cardsValue() > playerDeck.cardsValue()){
                 chatLog = chatLog + "\n" + "El dealer ha guanyat";
+                setWinner(0);
             }else
             if(playerDeck.cardsValue() == dealerDeck.cardsValue()){
                 chatLog = chatLog + "\n" + "Has empatat";
+                setWinner(1);
             }else
             if(playerDeck.cardsValue() > dealerDeck.cardsValue()){
                 chatLog = chatLog + "\n" + "Has guanyat, la teva ma val: " + playerDeck.cardsValue() + " i la ma del dealer es de: " + dealerDeck.cardsValue();
+                setWinner(2);
             }else{
                 chatLog = chatLog + "\n" + "El dealer guanya, la teva ma val: " + playerDeck.cardsValue() + " i la ma del dealer es de: " + dealerDeck.cardsValue();
+                setWinner(0);
             }
         }
 

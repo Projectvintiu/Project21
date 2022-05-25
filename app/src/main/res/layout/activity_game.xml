@@ -4,8 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo">
+    android:background="@drawable/fondo3"><![CDATA[
     tools:context=".GameActivity">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    ]]>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="41dp"
+        android:layout_height="61dp"
+        android:layout_marginEnd="260dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/videsimg" />
 
     <ImageView
         android:id="@+id/dealerCard6"
@@ -13,10 +39,10 @@
         android:layout_height="149dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintHorizontal_bias="0.162"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881"
+        app:layout_constraintVertical_bias="0.853"
         app:srcCompat="@drawable/transparent" />
 
     <ImageView
@@ -28,7 +54,7 @@
         app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881"
+        app:layout_constraintVertical_bias="0.855"
         app:srcCompat="@drawable/transparent" />
 
     <ImageView
@@ -40,7 +66,7 @@
         app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881"
+        app:layout_constraintVertical_bias="0.855"
         app:srcCompat="@drawable/transparent" />
 
     <ImageView
@@ -52,7 +78,7 @@
         app:layout_constraintHorizontal_bias="0.595"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881"
+        app:layout_constraintVertical_bias="0.855"
         app:srcCompat="@drawable/transparent" />
 
     <ImageView
@@ -64,7 +90,7 @@
         app:layout_constraintHorizontal_bias="0.786"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881"
+        app:layout_constraintVertical_bias="0.855"
         app:srcCompat="@drawable/transparent" />
 
     <ImageView
@@ -73,22 +99,22 @@
         android:layout_height="149dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintHorizontal_bias="0.901"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.881"
+        app:layout_constraintVertical_bias="0.855"
         app:srcCompat="@drawable/transparent" />
 
     <ImageView
         android:id="@+id/numberD"
-        android:layout_width="107dp"
-        android:layout_height="95dp"
+        android:layout_width="96dp"
+        android:layout_height="84dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.898"
+        app:layout_constraintHorizontal_bias="0.901"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.63"
+        app:layout_constraintVertical_bias="0.604"
         app:srcCompat="@android:drawable/screen_background_light_transparent" />
 
     <ImageView
@@ -97,10 +123,10 @@
         android:layout_height="86dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.898"
+        app:layout_constraintHorizontal_bias="0.902"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.349"
+        app:layout_constraintVertical_bias="0.375"
         app:srcCompat="@android:drawable/screen_background_light_transparent" />
 
     <ImageView
@@ -112,7 +138,7 @@
         app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.347"
+        app:layout_constraintVertical_bias="0.366"
         app:srcCompat="@drawable/valor_carta3" />
 
     <ImageView
@@ -121,10 +147,10 @@
         android:layout_height="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
+        app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.617"
+        app:layout_constraintVertical_bias="0.598"
         app:srcCompat="@drawable/dealer" />
 
     <ImageView
@@ -136,7 +162,7 @@
         app:layout_constraintHorizontal_bias="0.853"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.091"
+        app:layout_constraintVertical_bias="0.113"
         app:srcCompat="@drawable/transparent" />
 
     <ImageView
@@ -148,7 +174,7 @@
         app:layout_constraintHorizontal_bias="0.732"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.091"
+        app:layout_constraintVertical_bias="0.113"
         app:srcCompat="@drawable/transparent" />
 
     <ImageView
@@ -160,7 +186,7 @@
         app:layout_constraintHorizontal_bias="0.544"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.091"
+        app:layout_constraintVertical_bias="0.113"
         app:srcCompat="@drawable/transparent" />
 
     <ImageView
@@ -172,7 +198,7 @@
         app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.091"
+        app:layout_constraintVertical_bias="0.113"
         app:srcCompat="@drawable/transparent" />
 
     <ImageView
@@ -184,29 +210,31 @@
         app:layout_constraintHorizontal_bias="0.235"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.091"
+        app:layout_constraintVertical_bias="0.113"
         app:srcCompat="@drawable/transparent" />
 
     <Button
         android:id="@+id/pull_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
-        android:layout_marginBottom="340dp"
         android:text="PULL"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.278"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/stop_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="68dp"
-        android:layout_marginBottom="340dp"
         android:onClick="@{() -> GameActivity.onClickedAt(Options.STOP)}"
         android:text="PLANTARSE"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.724"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/playerCard1"
@@ -217,8 +245,38 @@
         app:layout_constraintHorizontal_bias="0.114"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.091"
+        app:layout_constraintVertical_bias="0.113"
         app:srcCompat="@drawable/transparent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="41dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/videsimg" />
+
+    <ImageView
+        android:id="@+id/videsDealer"
+        android:layout_width="64dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/rdiez" />
+
+    <ImageView
+        android:id="@+id/videsPlayer"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="72dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rdiez" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

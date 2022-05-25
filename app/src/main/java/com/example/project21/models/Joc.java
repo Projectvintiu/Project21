@@ -8,6 +8,11 @@ public class Joc {
     public boolean checkEndGame = false;
     public int winner = 0;
 
+    public Joc() {
+        playerDeck.setVides(10);
+        dealerDeck.setVides(10);
+    }
+
     String chatLog;
 
 
@@ -145,6 +150,8 @@ public class Joc {
         checkEndGame = true;
         if(playerDeck.cardsValue() > 21){
             chatLog = chatLog + "\n" + "Has passat de 21, el dealer ha guanyat";
+            playerDeck.setVides(playerDeck.getVides() - 1);
+            setWinner(0);
         }else{
             //Dealer agafa cartes fins que es pasa de 21 o es > player
             if(dealerDeck.cardsValue() < playerDeck.cardsValue()){
@@ -156,10 +163,12 @@ public class Joc {
             }
             if(dealerDeck.cardsValue() > 21){
                 chatLog = chatLog + "\n" + "Has guanyat!!";
+                dealerDeck.setVides(dealerDeck.getVides() - 1);
                 setWinner(2);
             }else
             if(dealerDeck.cardsValue() > playerDeck.cardsValue()){
                 chatLog = chatLog + "\n" + "El dealer ha guanyat";
+                playerDeck.setVides(playerDeck.getVides() - 1);
                 setWinner(0);
             }else
             if(playerDeck.cardsValue() == dealerDeck.cardsValue()){
@@ -168,10 +177,12 @@ public class Joc {
             }else
             if(playerDeck.cardsValue() > dealerDeck.cardsValue()){
                 chatLog = chatLog + "\n" + "Has guanyat, la teva ma val: " + playerDeck.cardsValue() + " i la ma del dealer es de: " + dealerDeck.cardsValue();
+                dealerDeck.setVides(dealerDeck.getVides() - 1);
                 setWinner(2);
             }else{
                 chatLog = chatLog + "\n" + "El dealer guanya, la teva ma val: " + playerDeck.cardsValue() + " i la ma del dealer es de: " + dealerDeck.cardsValue();
                 setWinner(0);
+                playerDeck.setVides(playerDeck.getVides() - 1);
             }
         }
 

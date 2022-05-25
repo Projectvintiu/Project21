@@ -24,7 +24,7 @@ public class GameActivity extends AppCompatActivity {
     String TAG = "GameActivity";
     String TAGGAME = "GameChat";
 
-    Joc joc = new Joc();
+    public Joc joc = new Joc();
     private  Button stop_button;
     private  Button pull_button;
 
@@ -34,39 +34,7 @@ public class GameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
-
-
-
-        ImageView valorP = findViewById(R.id.number);
-        ImageView valorD = findViewById(R.id.numberD);
-
-        ImageView playerCard1 = findViewById(R.id.playerCard1);
-        ImageView playerCard2 = findViewById(R.id.playerCard2);
-
-        ImageView dealerCard1 = findViewById(R.id.dealerCard1);
-        ImageView dealerCard2 = findViewById(R.id.dealerCard2);
-
-        joc.startGame();
-        Log.d(TAGGAME,"Empieza el juego");
-        Log.d(TAGGAME,joc.getChatLog());
-
-
-        playerCard1.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(0))));
-        playerCard2.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(1))));
-
-        dealerCard1.setImageDrawable(getDrawable(R.drawable.backcard));
-        dealerCard2.setImageDrawable(getDrawable(imageCard(joc.dealerDeck.getCarta(1))));
-
-
-
-        valorP.setImageDrawable(getDrawable(imageNumber(joc.playerDeck.cardsValue())));
-        valorD.setImageDrawable(getDrawable(imageNumber(joc.dealerDeck.secondCardValue())));
-
-
-        //TODO: @Didac. Us proposo que abans del taulell, es mostri una pantalla on es vegui el logo i un boto per començar a jugar. Aquest comença a jugar us ha de portar aquí al GameActivity. Ho teniu fet. Afegiu el logo que us quedara mes xula.
-        //TODO: @Didac. Hem de millorar la part visual.
-
-        //TODO: @Didac està bé la idea pero hauriem d'intentar utilitzar un viewmodel (dijous mirem com fer-ho).
+        startGame();
         stop_button = (Button) findViewById(R.id.stop_button);
         stop_button.setBackgroundColor(Color.RED);
         stop_button.setTextColor(Color.WHITE);
@@ -79,8 +47,6 @@ public class GameActivity extends AppCompatActivity {
             }
 
         });
-
-        //TODO: @Didac està bé la idea pero hauriem d'intentar utilitzar un viewmodel (dijous mirem com fer-ho).
 
         pull_button = (Button) findViewById(R.id.pull_button);
         pull_button.setBackgroundColor(Color.BLACK);
@@ -95,7 +61,6 @@ public class GameActivity extends AppCompatActivity {
         });
 
     }
-
     /***
      * getter de msg
      *
@@ -146,6 +111,7 @@ public class GameActivity extends AppCompatActivity {
             }
         }
         valorD.setImageDrawable(getDrawable(imageNumber(joc.dealerDeck.cardsValue())));
+
         showEndGameDialog();
 
 
@@ -192,24 +158,51 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    /***
-     * Funció que s'executa quan premem el boto de tornar a jugar, cosa que reinicia el joc per a que el
-     * jugador pugui tornar a començar
-     *
-     *
-     * @version 1.0
-     */
-    void playAgainActivity(){
-        /*TextView msg = findViewById(R.id.textView_pueva);
-        joc.setChatLog("");
-        joc.startGame();
-        msg.setText(joc.getChatLog());*/
-        openGameActivity();
-    }
 
-    public void openGameActivity(){
-        Intent intent = new Intent(this, GameActivity.class);
-        startActivity(intent);
+    public void startGame(){
+        ImageView valorP = findViewById(R.id.number);
+        ImageView valorD = findViewById(R.id.numberD);
+
+        ImageView videsPlayer = findViewById(R.id.videsPlayer);
+        ImageView videsDealer = findViewById(R.id.videsDealer);
+
+        ImageView playerCard1 = findViewById(R.id.playerCard1);
+        ImageView playerCard2 = findViewById(R.id.playerCard2);
+        ImageView playerCard3 = findViewById(R.id.playerCard3);
+        ImageView playerCard4 = findViewById(R.id.playerCard4);
+        ImageView playerCard5 = findViewById(R.id.playerCard5);
+        ImageView playerCard6 = findViewById(R.id.playerCard6);
+
+        ImageView dealerCard1 = findViewById(R.id.dealerCard1);
+        ImageView dealerCard2 = findViewById(R.id.dealerCard2);
+        ImageView dealerCard3 = findViewById(R.id.dealerCard3);
+        ImageView dealerCard4 = findViewById(R.id.dealerCard4);
+        ImageView dealerCard5 = findViewById(R.id.dealerCard5);
+        ImageView dealerCard6 = findViewById(R.id.dealerCard6);
+
+        joc.startGame();
+        Log.d(TAGGAME,"Empieza el juego");
+        Log.d(TAGGAME,joc.getChatLog());
+
+        playerCard1.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(0))));
+        playerCard2.setImageDrawable(getDrawable(imageCard(joc.playerDeck.getCarta(1))));
+        playerCard3.setImageDrawable(getDrawable(R.drawable.transparent));
+        playerCard4.setImageDrawable(getDrawable(R.drawable.transparent));
+        playerCard5.setImageDrawable(getDrawable(R.drawable.transparent));
+        playerCard6.setImageDrawable(getDrawable(R.drawable.transparent));
+
+        dealerCard1.setImageDrawable(getDrawable(R.drawable.backcard));
+        dealerCard2.setImageDrawable(getDrawable(imageCard(joc.dealerDeck.getCarta(1))));
+        dealerCard3.setImageDrawable(getDrawable(R.drawable.transparent));
+        dealerCard4.setImageDrawable(getDrawable(R.drawable.transparent));
+        dealerCard5.setImageDrawable(getDrawable(R.drawable.transparent));
+        dealerCard6.setImageDrawable(getDrawable(R.drawable.transparent));
+
+        valorP.setImageDrawable(getDrawable(imageNumber(joc.playerDeck.cardsValue())));
+        valorD.setImageDrawable(getDrawable(imageNumber(joc.dealerDeck.secondCardValue())));
+
+        videsPlayer.setImageDrawable(getDrawable(imageRedNumber(joc.playerDeck.getVides())));
+        videsDealer.setImageDrawable(getDrawable(imageRedNumber(joc.dealerDeck.getVides())));
     }
     public void openMainActivity(){
         Intent intent = new Intent(this,MainActivity.class);
@@ -237,7 +230,8 @@ public class GameActivity extends AppCompatActivity {
             winOrLose.setImageDrawable(getDrawable(R.drawable.utied));
         }
         playAgainButton.setOnClickListener((view) -> {
-            openGameActivity();
+            dialog.dismiss();
+            startGame();
 
         });
         exitButton.setOnClickListener((view) -> {
@@ -249,7 +243,6 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
-    //TODO @Didac: Això hauria d'estar implementat en la classe joc o carta
     //Intento de poner las imagenes en pantalla
     public int imageCard(Carta card){
         switch (card.toString()){
@@ -409,6 +402,35 @@ public class GameActivity extends AppCompatActivity {
                 return R.drawable.veintiuno;
             default:
                 return R.drawable.zero;
+
+        }
+
+    }
+
+    public int imageRedNumber(int value){
+        switch (value){
+            case 1:
+                return R.drawable.runo;
+            case 2:
+                return R.drawable.rdos;
+            case 3:
+                return R.drawable.rtres;
+            case 4:
+                return R.drawable.rcuatro;
+            case 5:
+                return R.drawable.rcinco;
+            case 6:
+                return R.drawable.rseis;
+            case 7:
+                return R.drawable.rsiete;
+            case 8:
+                return R.drawable.rocho;
+            case 9:
+                return R.drawable.rnueve;
+            case 10:
+                return R.drawable.rdiez;
+            default:
+                return R.drawable.rzero;
 
         }
 

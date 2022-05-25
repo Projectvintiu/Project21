@@ -6,6 +6,7 @@ import java.util.Random;
 public class Baraja {
 
     private ArrayList<Carta> cartas;
+    private int vides;
 
 
     /***
@@ -15,6 +16,15 @@ public class Baraja {
      */
     public Baraja(){
         this.cartas = new ArrayList<Carta>();
+    }
+
+
+    public int getVides() {
+        return vides;
+    }
+
+    public void setVides(int vides) {
+        this.vides = vides;
     }
 
     /***
@@ -197,7 +207,7 @@ public class Baraja {
                 case J: totalValue += 10; break;
                 case Q: totalValue += 10; break;
                 case K: totalValue += 10; break;
-                case A: totalValue += 1; break;
+                case A: totalValue += 11; break;
             }
 
         return totalValue;

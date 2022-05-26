@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.example.project21.models.Carta;
 import com.example.project21.models.Joc;
+import com.example.project21.utils.PreferencesProvider;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -154,8 +155,6 @@ public class GameActivity extends AppCompatActivity {
             showEndGameDialog();
         }
 
-
-
     }
 
 
@@ -201,8 +200,10 @@ public class GameActivity extends AppCompatActivity {
         valorP.setImageDrawable(getDrawable(imageNumber(joc.playerDeck.cardsValue())));
         valorD.setImageDrawable(getDrawable(imageNumber(joc.dealerDeck.secondCardValue())));
 
-        videsPlayer.setImageDrawable(getDrawable(imageRedNumber(joc.playerDeck.getVides())));
-        videsDealer.setImageDrawable(getDrawable(imageRedNumber(joc.dealerDeck.getVides())));
+        int videsP = PreferencesProvider.providePreferences().getInt("videsP", 0);
+        int videsD = PreferencesProvider.providePreferences().getInt("videsD", 0);
+        videsPlayer.setImageDrawable(getDrawable(imageRedNumber(videsP)));
+        videsDealer.setImageDrawable(getDrawable(imageRedNumber(videsD)));
     }
     public void openMainActivity(){
         Intent intent = new Intent(this,MainActivity.class);
@@ -229,6 +230,7 @@ public class GameActivity extends AppCompatActivity {
         }else{//empates
             winOrLose.setImageDrawable(getDrawable(R.drawable.utied));
         }
+
         playAgainButton.setOnClickListener((view) -> {
             dialog.dismiss();
             startGame();

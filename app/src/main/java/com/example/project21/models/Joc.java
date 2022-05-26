@@ -1,5 +1,7 @@
 package com.example.project21.models;
 
+import com.example.project21.utils.PreferencesProvider;
+
 public class Joc {
 
     Baraja playingBaraja = new Baraja();
@@ -8,13 +10,17 @@ public class Joc {
     public boolean checkEndGame = false;
     public int winner = 0;
 
-    public Joc() {
-        playerDeck.setVides(10);
-        dealerDeck.setVides(10);
-    }
 
     String chatLog;
 
+    public Joc() {
+        int videsP = PreferencesProvider.providePreferences().getInt("videsP", 0);
+        int videsD = PreferencesProvider.providePreferences().getInt("videsD", 0);
+        if((videsP <= 0) || (videsD <= 0)){
+            PreferencesProvider.providePreferences().edit().putInt("videsP",10).commit();
+            PreferencesProvider.providePreferences().edit().putInt("videsD",10).commit();
+        }
+    }
 
     /***
      * getter de guanyador
@@ -148,9 +154,13 @@ public class Joc {
      */
     public void winner(){
         checkEndGame = true;
+
+        int videsP = PreferencesProvider.providePreferences().getInt("videsP", 0);
+        int videsD = PreferencesProvider.providePreferences().getInt("videsD", 0);
         if(playerDeck.cardsValue() > 21){
             chatLog = chatLog + "\n" + "Has passat de 21, el dealer ha guanyat";
             playerDeck.setVides(playerDeck.getVides() - 1);
+            PreferencesProvider.providePreferences().edit().putInt("videsP",videsP -1).commit();
             setWinner(0);
         }else{
             //Dealer agafa cartes fins que es pasa de 21 o es > player
@@ -164,11 +174,13 @@ public class Joc {
             if(dealerDeck.cardsValue() > 21){
                 chatLog = chatLog + "\n" + "Has guanyat!!";
                 dealerDeck.setVides(dealerDeck.getVides() - 1);
+                PreferencesProvider.providePreferences().edit().putInt("videsD",videsD -1).commit();
                 setWinner(2);
             }else
             if(dealerDeck.cardsValue() > playerDeck.cardsValue()){
                 chatLog = chatLog + "\n" + "El dealer ha guanyat";
                 playerDeck.setVides(playerDeck.getVides() - 1);
+                PreferencesProvider.providePreferences().edit().putInt("videsP",videsP -1).commit();
                 setWinner(0);
             }else
             if(playerDeck.cardsValue() == dealerDeck.cardsValue()){
@@ -178,9 +190,11 @@ public class Joc {
             if(playerDeck.cardsValue() > dealerDeck.cardsValue()){
                 chatLog = chatLog + "\n" + "Has guanyat, la teva ma val: " + playerDeck.cardsValue() + " i la ma del dealer es de: " + dealerDeck.cardsValue();
                 dealerDeck.setVides(dealerDeck.getVides() - 1);
+                PreferencesProvider.providePreferences().edit().putInt("videsD",videsD -1).commit();
                 setWinner(2);
             }else{
                 chatLog = chatLog + "\n" + "El dealer guanya, la teva ma val: " + playerDeck.cardsValue() + " i la ma del dealer es de: " + dealerDeck.cardsValue();
+                PreferencesProvider.providePreferences().edit().putInt("videsP",videsP -1).commit();
                 setWinner(0);
                 playerDeck.setVides(playerDeck.getVides() - 1);
             }

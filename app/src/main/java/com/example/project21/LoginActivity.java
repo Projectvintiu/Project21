@@ -106,6 +106,8 @@ public class LoginActivity extends AppCompatActivity {
     private void data(){
         String token = PreferencesProvider.providePreferences().getString("token", "");
         Log.d(TAG, "token: " + token);
+        PreferencesProvider.providePreferences().edit().putInt("videsP", 10).commit();
+        PreferencesProvider.providePreferences().edit().putInt("videsD", 10).commit();
         if (token.equals("")) {
             // If device has no token -> go to LoginActivity()
             //startActivity(new Intent(this, LoginActivity.class));

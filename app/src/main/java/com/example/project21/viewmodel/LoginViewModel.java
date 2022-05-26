@@ -25,7 +25,6 @@ public class LoginViewModel {
     private  MutableLiveData<String> errorEmailLiveData;
     private  MutableLiveData<String> passwordLiveData;
     private  MutableLiveData<String> errorPasswordLiveData;
-
     public MutableLiveData<Boolean> isLogged;
 
     private AccountRepo accountRepo;

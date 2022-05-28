@@ -112,7 +112,7 @@ public class GameActivity extends AppCompatActivity {
             }
         }
         valorD.setImageDrawable(getDrawable(imageNumber(joc.dealerDeck.cardsValue())));
-
+        fiPartida();
         showEndGameDialog();
 
 
@@ -153,10 +153,28 @@ public class GameActivity extends AppCompatActivity {
 
         if(joc.playerDeck.cardsValue() > 21){
             showEndGameDialog();
+            fiPartida();
+        }
+    }
+
+    public void fiPartida(){
+        int trofeos = PreferencesProvider.providePreferences().getInt("trofeos", 0);
+        int muertes = PreferencesProvider.providePreferences().getInt("muertes", 0);
+
+        if(PreferencesProvider.providePreferences().getInt("videsP", 0) <= 0){
+            PreferencesProvider.providePreferences().edit().putInt("muertes", muertes + 1).commit();
+            PreferencesProvider.providePreferences().edit().putInt("videsP",10).commit();
+            PreferencesProvider.providePreferences().edit().putInt("videsD",10).commit();
+            openMainActivity();
+
+        }else if(PreferencesProvider.providePreferences().getInt("videsD", 0) <= 0){
+            PreferencesProvider.providePreferences().edit().putInt("trofeos", trofeos + 1).commit();
+            PreferencesProvider.providePreferences().edit().putInt("videsP",10).commit();
+            PreferencesProvider.providePreferences().edit().putInt("videsD",10).commit();
+            openMainActivity();
         }
 
     }
-
 
     public void startGame(){
         ImageView valorP = findViewById(R.id.number);

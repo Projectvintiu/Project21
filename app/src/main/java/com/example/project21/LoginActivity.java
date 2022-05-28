@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
 
         setup();
         data();
-        openGameActivity();  //Para entrar diractamente en el juego sin necesidad de iniciar sesión
+        //openGameActivity();  //Para entrar diractamente en el juego sin necesidad de iniciar sesión
 
         loginViewModel.isUserLogged().observe(this, new Observer<Result<String>>() {
             @Override
@@ -108,6 +108,9 @@ public class LoginActivity extends AppCompatActivity {
         Log.d(TAG, "token: " + token);
         PreferencesProvider.providePreferences().edit().putInt("videsP", 10).commit();
         PreferencesProvider.providePreferences().edit().putInt("videsD", 10).commit();
+        PreferencesProvider.providePreferences().edit().putInt("trofeos", 0).commit();
+        PreferencesProvider.providePreferences().edit().putInt("muertes", 0).commit();
+
         if (token.equals("")) {
             // If device has no token -> go to LoginActivity()
             //startActivity(new Intent(this, LoginActivity.class));
